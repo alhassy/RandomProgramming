@@ -1,0 +1,36 @@
+* Lists
+
+   '(x₀ x₁ … xₙ) 
+≈   (list 'x₀ 'x₁ … 'xₙ) 
+≈   (cons 'x₀ (cons 'x₁ (⋯ (cons 'xₙ ()) ⋯)))
+
+* Booleans
+
+Since lists are the prime structure, Lisp favours behaviours that make it
+easy to work with them. In particular, empty lists are treated as a false
+value in Boolean settings.
+
+(defun len (xs) (if xs (1+ (len (cdr xs))) 0))
+                ;; if xs is non-empty then 1 + the length of the tail, else yield 0.
+(len '(a b c d))
+
+Not only does the empty list evaluate to false, but it is the only false value in
+Common Lisp. Any value not equivalent to an empty list will be considered a true
+value.
+
+Disguises of the one true false value:
+   ()
+≈ '() 
+≈ 'nil
+≈  nil
+
+Woah!
+
+Indeed: (and (eq () '()) (eq () nil) (eq () 'nil))
+
+* progn 
+
+for cases when you really want to do more than one thing, you can use
+a special command, progn , to wedge in extra commands in a single expression.
+With progn , only the last evaluation is returned as the value of the full expres-
+sion.
