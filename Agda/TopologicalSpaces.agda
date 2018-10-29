@@ -16,7 +16,7 @@ to use a use-provided notion of equality on
 is an open set or not.
 -}
 
-record R : Set₁ where
+record TopologicalSpace : Set₁ where
 
   field     
      BaseSet  : Set
